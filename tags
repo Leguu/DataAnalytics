@@ -1,0 +1,62 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
+!_TAG_PROC_CWD	/home/legu/doc/sch/22-1-winter/COMP354/DataAnalytics/	//
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	5.9.0	/p5.9.20210905.0/
+24wIxHX7XMddwTkzlCOkLILqA1Y	.idea/workspace.xml	/^  <component name="ProjectId" id="24wIxHX7XMddwTkzlCOkLILqA1Y" \/>$/;"	i
+9dec0e45-83d9-4833-9ebb-4c9b96fd7572	.idea/workspace.xml	/^      <changelist id="9dec0e45-83d9-4833-9ebb-4c9b96fd7572" name="Changes" comment="" \/>$/;"	i
+9dec0e45-83d9-4833-9ebb-4c9b96fd7572	.idea/workspace.xml	/^    <list default="true" id="9dec0e45-83d9-4833-9ebb-4c9b96fd7572" name="Changes" comment="Initi/;"	i
+APP_BASE_NAME	gradlew.bat	/^set APP_BASE_NAME=%~n0$/;"	v
+APP_HOME	gradlew.bat	/^for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi$/;"	v
+APP_HOME	gradlew.bat	/^set APP_HOME=%DIRNAME%$/;"	v
+CLASSPATH	gradlew.bat	/^set CLASSPATH=%APP_HOME%\\gradle\\wrapper\\gradle-wrapper.jar$/;"	v
+DEFAULT_JVM_OPTS	gradlew.bat	/^set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"$/;"	v
+DIRNAME	gradlew.bat	/^if "%DIRNAME%" == "" set DIRNAME=.$/;"	v
+DIRNAME	gradlew.bat	/^set DIRNAME=%~dp0$/;"	v
+Default	.idea/workspace.xml	/^    <task active="true" id="Default" summary="Default task">$/;"	i
+Driver	src/main/java/Driver.java	/^public class Driver {$/;"	c
+GRADLE	.idea/workspace.xml	/^    <system id="GRADLE">$/;"	i
+JAVA_EXE	gradlew.bat	/^set JAVA_EXE=%JAVA_HOME%\/bin\/java.exe$/;"	v
+JAVA_EXE	gradlew.bat	/^set JAVA_EXE=java.exe$/;"	v
+JAVA_HOME	gradlew.bat	/^set JAVA_HOME=%JAVA_HOME:"=%$/;"	v
+LOCAL-00001	.idea/workspace.xml	/^    <task id="LOCAL-00001" summary="Initialised">$/;"	i
+Split	src/main/java/Split.java	/^    public Split(List<Point> points) {$/;"	m	class:Split
+Split	src/main/java/Split.java	/^    public Split(List<Point> points, Instant start, Instant end) {$/;"	m	class:Split
+Split	src/main/java/Split.java	/^public class Split {$/;"	c
+Workout	src/main/java/Workout.java	/^    public Workout(String filename) throws IOException {$/;"	m	class:Workout
+Workout	src/main/java/Workout.java	/^public class Workout {$/;"	c
+correctAltitude	src/main/java/Workout.java	/^    public Workout correctAltitude(Speed max) {$/;"	m	class:Workout
+die	gradlew	/^die () {$/;"	f
+distance	src/main/java/Split.java	/^    public Length distance() {$/;"	m	class:Split
+distributionBase	gradle/wrapper/gradle-wrapper.properties	/^distributionBase=GRADLE_USER_HOME$/;"	k
+distributionPath	gradle/wrapper/gradle-wrapper.properties	/^distributionPath=wrapper\/dists$/;"	k
+distributionUrl	gradle/wrapper/gradle-wrapper.properties	/^distributionUrl=https\\:\/\/services.gradle.org\/distributions\/gradle-7.2-bin.zip$/;"	k
+end	gradlew.bat	/^:end$/;"	l
+execute	gradlew.bat	/^:execute$/;"	l
+export	src/main/java/Workout.java	/^    public void export(String filename) throws IOException {$/;"	m	class:Workout
+fail	gradlew.bat	/^:fail$/;"	l
+findJavaFromJavaHome	gradlew.bat	/^:findJavaFromJavaHome$/;"	l
+gradle.version	.gradle/buildOutputCleanup/cache.properties	/^gradle.version=7.2$/;"	k
+main	src/main/java/Driver.java	/^    public static void main(String[] args) throws IOException {$/;"	m	class:Driver
+mainEnd	gradlew.bat	/^:mainEnd$/;"	l
+omega	gradlew.bat	/^:omega$/;"	l
+points	src/main/java/Split.java	/^    final List<Point> points;$/;"	f	class:Split
+points	src/main/java/Workout.java	/^    private final Split points;$/;"	f	class:Workout	file:
+save	gradlew	/^save () {$/;"	f
+speed	src/main/java/Split.java	/^    public Speed speed(boolean autopause) {$/;"	m	class:Split
+split	src/main/java/Workout.java	/^    public List<Split> split(Instant interval) {$/;"	m	class:Workout
+stream	src/main/java/Split.java	/^    public Stream<Point> stream() {$/;"	m	class:Split
+time	src/main/java/Split.java	/^    public Instant time() {$/;"	m	class:Split
+timePaused	src/main/java/Split.java	/^    public Instant timePaused(Speed max) {$/;"	m	class:Split
+toString	src/main/java/Split.java	/^    public String toString() {$/;"	m	class:Split
+toString	src/main/java/Workout.java	/^    public String toString() {$/;"	m	class:Workout
+topSpeed	src/main/java/Workout.java	/^    public Speed topSpeed(Instant interval, boolean autopause) {$/;"	m	class:Workout
+warn	gradlew	/^warn () {$/;"	f
+zipStoreBase	gradle/wrapper/gradle-wrapper.properties	/^zipStoreBase=GRADLE_USER_HOME$/;"	k
+zipStorePath	gradle/wrapper/gradle-wrapper.properties	/^zipStorePath=wrapper\/dists$/;"	k
