@@ -1,9 +1,9 @@
 .gradle
 **/build/
 !src/**/build/
-build/
-bin/
-workspace/
+build
+bin
+workspace
 
 gradle-app.setting
 
