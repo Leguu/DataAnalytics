@@ -1,4 +1,5 @@
 import io.jenetics.jpx.*;
+import io.jenetics.jpx.Speed.Unit;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -30,6 +31,10 @@ public class Workout {
                 .flatMap(TrackSegment::points)
                 .collect(Collectors.toList()));
         Logger.getGlobal().info("Successfully loaded workout from file " + filename);
+    }
+
+    public Workout(Split points) {
+        this.points = points;
     }
 
     /**
@@ -81,6 +86,10 @@ public class Workout {
     public Speed topSpeed(Instant interval, boolean autopause) {
         var splits = split(interval);
         return null;
+    }
+
+    public Split getPoints() {
+        return points;
     }
 
     @Override
