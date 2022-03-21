@@ -39,6 +39,20 @@ public class Tests {
     }
 
     @Test
+    void splits() {
+        var splits = altitude.split(Instant.ofEpochSecond(60));
+        // Make sure there are 4 splits when dividing by 60 seconds.
+        assertEquals(splits.size(), 4);
+    }
+
+    @Test
+    void splitConstructor() {
+        var split = new Split(altitude.getPoints().points, Instant.ofEpochSecond(1), Instant.ofEpochSecond(61));
+        assertEquals(split.points.size(), 1);
+        assertEquals(split.points.get(0).getElevation().get().intValue(), 100);
+    }
+
+    @Test
     void distance() {
         // In meters
         var totalDistance = workout.getPoints().distance().doubleValue();

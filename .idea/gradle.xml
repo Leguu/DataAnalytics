@@ -9,7 +9,7 @@
         <option name="gradleHome" value="/usr/share/java/gradle" />
         <option name="modules">
           <set>
-            <option value="$USER_HOME$/doc/sch/22-1-winter/COMP354/DataAnalytics" />
+            <option value="$PROJECT_DIR$" />
           </set>
         </option>
       </GradleProjectSettings>
