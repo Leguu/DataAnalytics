@@ -42,7 +42,7 @@ public class Tests {
     void splits() {
         var splits = altitude.split(Instant.ofEpochSecond(60));
         // Make sure there are 4 splits when dividing by 60 seconds.
-        assertEquals(splits.size(), 4);
+        assertEquals(4, splits.size());
     }
 
     @Test
