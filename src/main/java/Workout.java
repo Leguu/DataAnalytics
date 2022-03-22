@@ -4,6 +4,7 @@ import io.jenetics.jpx.Speed.Unit;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -70,10 +71,25 @@ public class Workout {
      * For example, splitting a 10-minute workout into
      * 2 minute splits will give a list of 5 splits.
      *
+     * @param interval 2 minute
      * @author Quan
      */
     public List<Split> split(Instant interval) {
-        return null;
+        var newSplits = new ArrayList<Split>();
+        var totalTimeInSeconds = this.points.time().getEpochSecond();
+        var startTimeInSecond = this.points.points.get(0).getInstant().get().getEpochSecond();
+        var intervalEpochSecond = interval.getEpochSecond();
+        var numberOfNewSplits = (totalTimeInSeconds / intervalEpochSecond) + 1;
+        for (int i = 0; i < numberOfNewSplits; i++) {
+            var splitStartTimeInSecond = startTimeInSecond + i * intervalEpochSecond;
+            var splitEndTimeInSecond = startTimeInSecond + (i + 1) * intervalEpochSecond;
+            newSplits.add(new Split(
+                    this.points.points,
+                    Instant.ofEpochSecond(splitStartTimeInSecond),
+                    Instant.ofEpochSecond(splitEndTimeInSecond))
+            );
+        }
+        return newSplits;
     }
 
     /**
