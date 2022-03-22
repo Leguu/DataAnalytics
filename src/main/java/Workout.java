@@ -70,6 +70,7 @@ public class Workout {
      * Split this workout into splits of a given interval.
      * For example, splitting a 10-minute workout into
      * 2 minute splits will give a list of 5 splits.
+     *
      * @param interval 2 minute
      * @author Quan
      */
@@ -78,11 +79,15 @@ public class Workout {
         var totalTimeInSeconds = this.points.time().getEpochSecond();
         var startTimeInSecond = this.points.points.get(0).getInstant().get().getEpochSecond();
         var intervalEpochSecond = interval.getEpochSecond();
-        var numberOfNewSplits = Math.round(totalTimeInSeconds/intervalEpochSecond) + 1;
+        var numberOfNewSplits = (totalTimeInSeconds / intervalEpochSecond) + 1;
         for (int i = 0; i < numberOfNewSplits; i++) {
             var splitStartTimeInSecond = startTimeInSecond + i * intervalEpochSecond;
-            var splitEndTimeInSecond = startTimeInSecond + (i+1) * intervalEpochSecond;
-            newSplits.add(new Split(this.points.points, Instant.ofEpochSecond(splitStartTimeInSecond)  , Instant.ofEpochSecond(splitEndTimeInSecond)));
+            var splitEndTimeInSecond = startTimeInSecond + (i + 1) * intervalEpochSecond;
+            newSplits.add(new Split(
+                    this.points.points,
+                    Instant.ofEpochSecond(splitStartTimeInSecond),
+                    Instant.ofEpochSecond(splitEndTimeInSecond))
+            );
         }
         return newSplits;
     }

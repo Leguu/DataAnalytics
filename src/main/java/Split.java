@@ -27,13 +27,13 @@ public class Split {
         this.points = new LinkedList<>();
         var startInSecond = start.getEpochSecond();
         var endInSecond = end.getEpochSecond();
-        givenPoints.forEach(point -> {
+        for (var point : givenPoints) {
             var pointSecond = point.getInstant().get().getEpochSecond();
-            if (pointSecond >= startInSecond && pointSecond <= endInSecond) {
+            if (startInSecond <= pointSecond && pointSecond <= endInSecond) {
                 // it's in the range
                 this.points.add(point);
             }
-        });
+        }
     }
 
     /**
@@ -53,7 +53,7 @@ public class Split {
     public Instant time() {
         // todo: remove when logic is done. to remove exception thrown at Workout
         return Instant.ofEpochMilli(180 * 1000);
-     //   return null;
+        //   return null;
     }
 
     /**
