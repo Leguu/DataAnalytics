@@ -101,7 +101,17 @@ public class Workout {
      */
     public Speed topSpeed(Instant interval, boolean autopause) {
         var splits = split(interval);
-        return null;
+        double intervalSecond = interval.toEpochMilli()/1000;
+        double max = 0;
+        for(int i = 0; i < splits.size()-1; i++){
+
+            if (splits.get(i).distance().doubleValue()/intervalSecond > max)
+            {
+                max = splits.get(i).distance().doubleValue() / intervalSecond;
+            }
+        }
+        Speed topSpeed = Speed.of(max,Unit.METERS_PER_SECOND);
+        return topSpeed;
     }
 
     public Split getPoints() {

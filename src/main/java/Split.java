@@ -1,6 +1,7 @@
 import io.jenetics.jpx.Length;
 import io.jenetics.jpx.Point;
 import io.jenetics.jpx.Speed;
+import io.jenetics.jpx.geom.Geoid;
 
 import java.time.Instant;
 import java.util.LinkedList;
@@ -42,7 +43,17 @@ public class Split {
      * @author Jingyi
      */
     public Length distance() {
-        return null;
+
+        double totalDistance = 0;
+        for(int i = 0; i+1 < points.size(); i++){
+            Point start = points.get(i);
+            Point end = points.get(i+1);
+            Length distance = Geoid.WGS84.distance(start, end);
+            double distanceDouble = distance.doubleValue();
+            totalDistance += distanceDouble;
+        }
+        Length distance = Length.of(totalDistance, Length.Unit.METER);
+        return distance;
     }
 
     /**
@@ -51,9 +62,11 @@ public class Split {
      * @author Jingyi
      */
     public Instant time() {
-        // todo: remove when logic is done. to remove exception thrown at Workout
-        return Instant.ofEpochMilli(180 * 1000);
-        //   return null;
+
+        Long start = this.points.get(0).getInstant().get().getEpochSecond();
+        Long end = this.points.get(points.size()-1).getInstant().get().getEpochSecond();
+        Instant time = Instant.ofEpochSecond(end-start);
+        return time;
     }
 
     /**
