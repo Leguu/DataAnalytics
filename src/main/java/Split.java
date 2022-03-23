@@ -56,6 +56,7 @@ public class Split {
         return distance;
     }
 
+
     /**
      * The time taken for this split.
      *
