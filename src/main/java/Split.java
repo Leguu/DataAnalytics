@@ -43,12 +43,11 @@ public class Split {
      * @author Jingyi
      */
     public Length distance() {
-
         double totalDistance = 0;
-        for(int i = 0; i+1 < points.size(); i++){
-            Point start = points.get(i);
-            Point end = points.get(i+1);
-            Length distance = Geoid.WGS84.distance(start, end);
+        for (int i = 0; i + 1 < points.size(); i++) {
+            var start = points.get(i);
+            var end = points.get(i + 1);
+            Length distance = start.distance(end);
             double distanceDouble = distance.doubleValue();
             totalDistance += distanceDouble;
         }
@@ -65,8 +64,8 @@ public class Split {
     public Instant time() {
 
         Long start = this.points.get(0).getInstant().get().getEpochSecond();
-        Long end = this.points.get(points.size()-1).getInstant().get().getEpochSecond();
-        Instant time = Instant.ofEpochSecond(end-start);
+        Long end = this.points.get(points.size() - 1).getInstant().get().getEpochSecond();
+        Instant time = Instant.ofEpochSecond(end - start);
         return time;
     }
 
