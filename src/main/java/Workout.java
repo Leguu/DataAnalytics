@@ -71,12 +71,19 @@ public class Workout {
             var currentElevation = current.getElevation().get().doubleValue();
             var nextElevation = next.getElevation().get().doubleValue();
 
-            var deltaElevation = Math.abs(nextElevation - currentElevation);
+            var deltaElevation = nextElevation - currentElevation;
             var deltaTime = next.getInstant().get().getEpochSecond() - next.getInstant().get().getEpochSecond();
-            var speed = deltaElevation / deltaTime;
+            var speed = Math.abs(deltaElevation) / deltaTime;
 
             if (speed > max.doubleValue()) {
-                var boundElevation = current.getElevation().get().doubleValue() + max.doubleValue();
+                double boundElevation;
+                if (deltaElevation < 0) {
+                    boundElevation = current.getElevation().get().doubleValue() - max.doubleValue();
+                } else if (deltaElevation > 0) {
+                    boundElevation = current.getElevation().get().doubleValue() + max.doubleValue();
+                } else {
+                    throw new RuntimeException("Change in elevation is equal to zero, but it shouldn't be. Did you set the maximum speed to 0?");
+                }
                 var newPoint = WayPoint.builder()
                         .lat(next.getLatitude())
                         .lon(next.getLongitude())
