@@ -47,12 +47,10 @@ public class Split {
         for (int i = 0; i + 1 < points.size(); i++) {
             var start = points.get(i);
             var end = points.get(i + 1);
-            Length distance = start.distance(end);
-            double distanceDouble = distance.doubleValue();
-            totalDistance += distanceDouble;
+            var distance = start.distance(end);
+            totalDistance += distance.doubleValue();
         }
-        Length distance = Length.of(totalDistance, Length.Unit.METER);
-        return distance;
+        return Length.of(totalDistance, Length.Unit.METER);
     }
 
 
@@ -62,11 +60,9 @@ public class Split {
      * @author Jingyi
      */
     public Instant time() {
-
-        Long start = this.points.get(0).getInstant().get().getEpochSecond();
-        Long end = this.points.get(points.size() - 1).getInstant().get().getEpochSecond();
-        Instant time = Instant.ofEpochSecond(end - start);
-        return time;
+        var start = this.points.get(0).getInstant().get().getEpochSecond();
+        var end = this.points.get(points.size() - 1).getInstant().get().getEpochSecond();
+        return Instant.ofEpochSecond(end - start);
     }
 
     /**
