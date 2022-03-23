@@ -1,6 +1,7 @@
 import io.jenetics.jpx.Length;
 import io.jenetics.jpx.Point;
 import io.jenetics.jpx.Speed;
+import io.jenetics.jpx.geom.Geoid;
 
 import java.time.Instant;
 import java.util.LinkedList;
@@ -42,8 +43,16 @@ public class Split {
      * @author Jingyi
      */
     public Length distance() {
-        return null;
+        double totalDistance = 0;
+        for (int i = 0; i + 1 < points.size(); i++) {
+            var start = points.get(i);
+            var end = points.get(i + 1);
+            var distance = start.distance(end);
+            totalDistance += distance.doubleValue();
+        }
+        return Length.of(totalDistance, Length.Unit.METER);
     }
+
 
     /**
      * The time taken for this split.
@@ -51,9 +60,9 @@ public class Split {
      * @author Jingyi
      */
     public Instant time() {
-        // todo: remove when logic is done. to remove exception thrown at Workout
-        return Instant.ofEpochMilli(180 * 1000);
-        //   return null;
+        var start = this.points.get(0).getInstant().get().getEpochSecond();
+        var end = this.points.get(points.size() - 1).getInstant().get().getEpochSecond();
+        return Instant.ofEpochSecond(end - start);
     }
 
     /**
