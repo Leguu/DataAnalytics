@@ -54,7 +54,6 @@ public class Split {
         return Length.of(totalDistance, Length.Unit.METER);
     }
 
-
     /**
      * The time taken for this split.
      *
@@ -72,8 +71,20 @@ public class Split {
      * @param max the max speed that determines whether someone is paused.
      * @author Brandon
      */
-    public Instant timePaused(Speed max) {
-        return null;
+    public long timePaused(Speed max) {
+        long pausedTime = 0;
+        long curentSpeed = 0;
+        for (int i = 0; i < points.size() - 1; i++) {
+            curentSpeed = Math.abs((points.get(i).distance(points.get(i + 1)).longValue())
+                    / (1000 * (points.get(i + 1).getInstant().get().toEpochMilli()
+                            - points.get(i).getInstant().get().toEpochMilli())));
+            if (curentSpeed < max.longValue()) {
+                pausedTime += Math.abs((points.get(i + 1).getInstant().get().toEpochMilli())
+                        - (points.get(i).getInstant().get().toEpochMilli()));
+            }
+
+        }
+        return pausedTime;
     }
 
     /**
@@ -82,8 +93,12 @@ public class Split {
      * @param autopause determines whether paused time is taken into account.
      * @author Brandon
      */
-    public Speed speed(boolean autopause) {
-        return null;
+    public long speed(boolean autopause) {
+        if (autopause) {
+            return ((distance().longValue() / time().toEpochMilli())
+                    - timePaused(Speed.of(5, Speed.Unit.METERS_PER_SECOND)));
+        } else
+            return distance().longValue() / time().toEpochMilli();
     }
 
     public Stream<Point> stream() {
