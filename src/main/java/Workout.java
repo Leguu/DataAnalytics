@@ -101,6 +101,14 @@ public class Workout {
      */
     public Speed topSpeed(Instant interval, boolean autopause) {
         var splits = split(interval);
+        //todo once the split.speed is define, replace with the commented code
+        /*
+                for (var split : splits) {
+            var speed = split.speed(autopause);
+            if (speed > max)
+                max = speed;
+        }
+        * */
         double intervalSecond = interval.toEpochMilli()/1000;
         double max = 0;
         for(int i = 0; i < splits.size()-1; i++){
