@@ -63,7 +63,30 @@ public class Workout {
      * @author Tamzid
      */
     public Workout correctAltitude(Speed max) {
-        return null;
+        var newSplit = (Split) points.clone();
+        for (int i = 0; i < newSplit.points.size() - 1; i++) {
+            var current = points.points.get(i);
+            var next = points.points.get(i + 1);
+
+            var currentElevation = current.getElevation().get().doubleValue();
+            var nextElevation = next.getElevation().get().doubleValue();
+
+            var deltaElevation = Math.abs(nextElevation - currentElevation);
+            var deltaTime = next.getInstant().get().getEpochSecond() - next.getInstant().get().getEpochSecond();
+            var speed = deltaElevation / deltaTime;
+
+            if (speed > max.doubleValue()) {
+                var boundElevation = current.getElevation().get().doubleValue() + max.doubleValue();
+                var newPoint = WayPoint.builder()
+                        .lat(next.getLatitude())
+                        .lon(next.getLongitude())
+                        .ele(boundElevation)
+                        .time(next.getInstant().get())
+                        .build();
+                newSplit.points.set(i + 1, newPoint);
+            }
+        }
+        return new Workout(newSplit);
     }
 
     /**
