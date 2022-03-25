@@ -103,11 +103,11 @@ public class Tests {
 
     @Test
     void altitudeCorrection() {
-        var corrected = altitude.correctAltitude(Speed.of(10, Speed.Unit.METERS_PER_SECOND));
+        var corrected = altitude.correctAltitude(Speed.of(1, Speed.Unit.METERS_PER_SECOND));
         // Since the user moved more than 10 m/s in the second point, we expect the algorithm
         // to constrain the elevation to a reasonable 10 m/s again.
         assertEquals(
-                10,
+                1,
                 corrected.getPoints()
                         .points
                         .get(1)

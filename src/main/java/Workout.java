@@ -23,6 +23,7 @@ public class Workout {
      * Load a workout from a GPX file.
      *
      * @throws IOException if the GPX object can't be read
+     * @author Asil
      */
     public Workout(String filename) throws IOException {
         var gpx = GPX.read(filename);
@@ -40,6 +41,8 @@ public class Workout {
 
     /**
      * Exports this workout to a new GPX.
+     *
+     * @author Asil
      */
     public void export(String filename) throws IOException {
         var gpx = GPX.builder()
@@ -72,7 +75,7 @@ public class Workout {
             var nextElevation = next.getElevation().get().doubleValue();
 
             var deltaElevation = nextElevation - currentElevation;
-            var deltaTime = next.getInstant().get().getEpochSecond() - next.getInstant().get().getEpochSecond();
+            var deltaTime = next.getInstant().get().getEpochSecond() - current.getInstant().get().getEpochSecond();
             var speed = Math.abs(deltaElevation) / deltaTime;
 
             if (speed > max.doubleValue()) {
