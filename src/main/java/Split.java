@@ -22,8 +22,6 @@ public class Split {
     /**
      * Initialise points to all the points between
      * the start instant and end instant in the given list of points.
-     *
-     * @author Quan
      */
     public Split(List<Point> givenPoints, Instant start, Instant end) {
         this.points = new LinkedList<>();
@@ -40,8 +38,6 @@ public class Split {
 
     /**
      * This distance travelled in this split.
-     *
-     * @author Jingyi
      */
     public Length distance() {
         double totalDistance = 0;
@@ -56,8 +52,6 @@ public class Split {
 
     /**
      * The time taken for this split.
-     *
-     * @author Jingyi
      */
     public Instant time() {
         var start = this.points.get(0).getInstant().get().getEpochSecond();
@@ -69,7 +63,6 @@ public class Split {
      * Calculate time spent on pause.
      *
      * @param max the max speed that determines whether someone is paused.
-     * @author Brandon
      */
     public Instant timePaused(Speed max) {
         long pausedTime = 0;
@@ -93,7 +86,6 @@ public class Split {
      * Calculate the average speed from the total distance and total time taken.
      *
      * @param autopause determines whether paused time is taken into account.
-     * @author Brandon
      */
     public Speed speed(boolean autopause) {
         if (autopause) {

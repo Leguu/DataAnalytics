@@ -23,7 +23,6 @@ public class Workout {
      * Load a workout from a GPX file.
      *
      * @throws IOException if the GPX object can't be read
-     * @author Asil
      */
     public Workout(String filename) throws IOException {
         var gpx = GPX.read(filename);
@@ -41,8 +40,6 @@ public class Workout {
 
     /**
      * Exports this workout to a new GPX.
-     *
-     * @author Asil
      */
     public void export(String filename) throws IOException {
         var gpx = GPX.builder()
@@ -63,7 +60,6 @@ public class Workout {
      *
      * @param max the upper constraint to vertical speed
      * @return A Workout with the altitude adjusted.
-     * @author Tamzid
      */
     public Workout correctAltitude(Speed max) {
         var newSplit = (Split) points.clone();
@@ -105,7 +101,6 @@ public class Workout {
      * 2 minute splits will give a list of 5 splits.
      *
      * @param interval 2 minute
-     * @author Quan
      */
     public List<Split> split(Instant interval) {
         var newSplits = new ArrayList<Split>();
@@ -130,7 +125,6 @@ public class Workout {
      *
      * @param autopause whether to account for the user standing still
      * @param interval  the length of splits
-     * @author Jingyi
      */
     public Speed topSpeed(Instant interval, boolean autopause) {
         var splits = split(interval);
