@@ -54,7 +54,6 @@ public class Split {
         return Length.of(totalDistance, Length.Unit.METER);
     }
 
-
     /**
      * The time taken for this split.
      *
@@ -73,7 +72,21 @@ public class Split {
      * @author Brandon
      */
     public Instant timePaused(Speed max) {
-        return null;
+        long pausedTime = 0;
+
+        for (int i = 0; i < points.size() - 1; i++) {
+            var first = points.get(i);
+            var second = points.get(i + 1);
+            var time = second.getInstant().get().getEpochSecond() - first.getInstant().get().getEpochSecond();
+
+            var currentSpeed = first.distance(second).longValue() / time;
+
+            if (currentSpeed < max.longValue()) {
+                pausedTime += time;
+            }
+        }
+
+        return Instant.ofEpochSecond(pausedTime);
     }
 
     /**
@@ -83,7 +96,12 @@ public class Split {
      * @author Brandon
      */
     public Speed speed(boolean autopause) {
-        return null;
+        if (autopause) {
+            var time = time().getEpochSecond() - timePaused(Speed.of(5, Speed.Unit.KILOMETERS_PER_HOUR)).getEpochSecond();
+            return Speed.of(distance().doubleValue() / time, Speed.Unit.METERS_PER_SECOND);
+        } else {
+            return Speed.of(distance().doubleValue() / time().getEpochSecond(), Speed.Unit.METERS_PER_SECOND);
+        }
     }
 
     public Stream<Point> stream() {
