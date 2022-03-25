@@ -23,6 +23,7 @@ public class Workout {
      * Load a workout from a GPX file.
      *
      * @throws IOException if the GPX object can't be read
+     * @author Asil
      */
     public Workout(String filename) throws IOException {
         var gpx = GPX.read(filename);
@@ -40,6 +41,8 @@ public class Workout {
 
     /**
      * Exports this workout to a new GPX.
+     *
+     * @author Asil
      */
     public void export(String filename) throws IOException {
         var gpx = GPX.builder()
@@ -63,7 +66,37 @@ public class Workout {
      * @author Tamzid
      */
     public Workout correctAltitude(Speed max) {
-        return null;
+        var newSplit = (Split) points.clone();
+        for (int i = 0; i < newSplit.points.size() - 1; i++) {
+            var current = points.points.get(i);
+            var next = points.points.get(i + 1);
+
+            var currentElevation = current.getElevation().get().doubleValue();
+            var nextElevation = next.getElevation().get().doubleValue();
+
+            var deltaElevation = nextElevation - currentElevation;
+            var deltaTime = next.getInstant().get().getEpochSecond() - current.getInstant().get().getEpochSecond();
+            var speed = Math.abs(deltaElevation) / deltaTime;
+
+            if (speed > max.doubleValue()) {
+                double boundElevation;
+                if (deltaElevation < 0) {
+                    boundElevation = current.getElevation().get().doubleValue() - max.doubleValue();
+                } else if (deltaElevation > 0) {
+                    boundElevation = current.getElevation().get().doubleValue() + max.doubleValue();
+                } else {
+                    throw new RuntimeException("Change in elevation is equal to zero, but it shouldn't be. Did you set the maximum speed to 0?");
+                }
+                var newPoint = WayPoint.builder()
+                        .lat(next.getLatitude())
+                        .lon(next.getLongitude())
+                        .ele(boundElevation)
+                        .time(next.getInstant().get())
+                        .build();
+                newSplit.points.set(i + 1, newPoint);
+            }
+        }
+        return new Workout(newSplit);
     }
 
     /**

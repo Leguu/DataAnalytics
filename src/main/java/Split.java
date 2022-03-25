@@ -4,6 +4,7 @@ import io.jenetics.jpx.Speed;
 import io.jenetics.jpx.geom.Geoid;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Stream;
@@ -87,6 +88,11 @@ public class Split {
 
     public Stream<Point> stream() {
         return this.points.stream();
+    }
+
+    @Override
+    protected Object clone() {
+        return new Split(new ArrayList<>(points));
     }
 
     /**
