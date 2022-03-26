@@ -47,7 +47,11 @@ public class Split {
             var distance = start.distance(end);
             totalDistance += distance.doubleValue();
         }
-        return Length.of(totalDistance, Length.Unit.METER);
+        if (totalDistance >= 0) {
+            return Length.of(totalDistance, Length.Unit.METER);
+        } else {
+            return Length.of(-1, Length.Unit.METER);
+        }
     }
 
     /**
